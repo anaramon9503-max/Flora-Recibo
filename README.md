@@ -1,9 +1,9 @@
 # Recibos Flora Rodulfo Photography
 
-Versión más parecida a la referencia visual, usando:
-- logo de Flora
-- colores negro, dorado y crema
+Versión femenina del generador:
+- header más delicado
+- footer más femenino
+- método de pago corregido
+- cliente se limpia al crear nuevo recibo
 - numeración automática
-- descarga PNG
-- guardar PDF
 - lista para Vercel
