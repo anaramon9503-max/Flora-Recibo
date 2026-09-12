@@ -1,3 +1,3 @@
-# Recibos Flora Rodulfo Photography
+# Recibos Flora
 
-Versión mejorada con diseño más bonito y el campo cliente sí se limpia al crear un nuevo recibo.
+Versión elegante y minimalista del generador de recibos, lista para Vercel.
