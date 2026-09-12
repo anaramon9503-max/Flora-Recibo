@@ -1,9 +1,10 @@
-# Recibos Flora Rodulfo Photography
+# Recibos Flora — Bonito v2
 
-Versión femenina del generador:
-- header más delicado
-- footer más femenino
-- método de pago corregido
-- cliente se limpia al crear nuevo recibo
-- numeración automática
-- lista para Vercel
+Rediseño basado en la captura:
+- logo sin cuadro negro (fondo transparente)
+- header más compacto
+- método de pago alineado y contenido
+- cliente realmente vacío al crear nuevo recibo
+- sin hueco gigante en medio
+- footer más corto y delicado
+- altura del recibo se adapta a los conceptos
