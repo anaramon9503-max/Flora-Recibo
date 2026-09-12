@@ -43,10 +43,43 @@ textarea{min-height:68px;resize:vertical}
 input:focus,textarea:focus,select:focus{border-color:#c99a52;box-shadow:0 0 0 3px rgba(201,154,82,.12)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .item{
-  display:grid;grid-template-columns:1fr 1.1fr .65fr 38px;gap:7px;align-items:end;margin-bottom:7px;
+  background:#1a1512;
+  border:1px solid #40352c;
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:10px;
+}
+.item-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.item-id{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.10em;
+  color:#e5cda5;
 }
 .item button{
-  height:40px;border:0;border-radius:10px;background:#3a2823;color:#ffd6d6;font-size:19px;cursor:pointer;
+  height:34px;
+  width:34px;
+  border:0;
+  border-radius:10px;
+  background:#3a2823;
+  color:#ffd6d6;
+  font-size:18px;
+  cursor:pointer;
+}
+.item-fields{
+  display:grid;
+  gap:9px;
+}
+.item-field label{
+  margin:0 0 5px;
+  font-size:10px;
+  color:#bfb4aa;
+  letter-spacing:.04em;
 }
 .btn{
   width:100%;border:0;border-radius:13px;padding:12px 13px;font-size:13px;font-weight:700;cursor:pointer;
@@ -224,17 +257,42 @@ function getItems(){
     amount:r.querySelector('.amount').value
   })).filter(x=>x.concept||x.desc||Number(x.amount));
 }
+function refreshItemLabels(){
+  [...document.querySelectorAll('.item')].forEach((item,idx)=>{
+    const label=item.querySelector('.item-id');
+    if(label) label.textContent='CONCEPTO ' + String(idx+1).padStart(2,'0');
+  });
+}
 function addItem(concept='Sesión fotográfica',desc='Servicio de fotografía',amount='500'){
   const r=document.createElement('div');
   r.className='item';
   r.innerHTML=
-    '<div><input class="concept" value="'+String(concept).replace(/"/g,'&quot;')+'"></div>'+
-    '<div><input class="desc" value="'+String(desc).replace(/"/g,'&quot;')+'"></div>'+
-    '<div><input class="amount" type="number" min="0" step="0.01" value="'+amount+'"></div>'+
-    '<button type="button">×</button>';
-  r.querySelector('button').onclick=()=>{r.remove();draw()};
+    '<div class="item-head">'+
+      '<div class="item-id">CONCEPTO</div>'+
+      '<button type="button" title="Eliminar concepto">×</button>'+
+    '</div>'+
+    '<div class="item-fields">'+
+      '<div class="item-field">'+
+        '<label>Concepto</label>'+
+        '<input class="concept" value="'+String(concept).replace(/"/g,'&quot;')+'" placeholder="Ej. Sesión fotográfica">'+
+      '</div>'+
+      '<div class="item-field">'+
+        '<label>Descripción</label>'+
+        '<input class="desc" value="'+String(desc).replace(/"/g,'&quot;')+'" placeholder="Ej. Cobertura de sesión fotográfica">'+
+      '</div>'+
+      '<div class="item-field">'+
+        '<label>Costo</label>'+
+        '<input class="amount" type="number" min="0" step="0.01" value="'+amount+'" placeholder="500">'+
+      '</div>'+
+    '</div>';
+  r.querySelector('button').onclick=()=>{
+    r.remove();
+    refreshItemLabels();
+    draw();
+  };
   r.querySelectorAll('input').forEach(el=>el.addEventListener('input',draw));
   $('items').appendChild(r);
+  refreshItemLabels();
   draw();
 }
 function smallFlower(x,y){
