@@ -1,10 +1,9 @@
-# Recibos Flora — Bonito v2
+# Recibos Flora Rodulfo Photography
 
-Rediseño basado en la captura:
-- logo sin cuadro negro (fondo transparente)
-- header más compacto
-- método de pago alineado y contenido
-- cliente realmente vacío al crear nuevo recibo
-- sin hueco gigante en medio
-- footer más corto y delicado
-- altura del recibo se adapta a los conceptos
+Correcciones:
+- La vista previa vuelve a mostrarse.
+- Se eliminó el texto explicativo del encabezado.
+- Se eliminó la nota técnica inferior.
+- Mantiene el logo, colores y diseño de Flora.
+- Cliente se limpia al crear un nuevo recibo.
+- Numeración automática.

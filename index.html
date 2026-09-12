@@ -71,7 +71,7 @@ canvas{
   <aside class="panel">
     <div class="eyebrow">FLORA RODULFO PHOTOGRAPHY</div>
     <h1>Recibo</h1>
-    <div class="intro">Ahora sí: más limpio, femenino y proporcionado. Sin bloques enormes ni espacios vacíos.</div>
+    
 
     <div class="section">
       <div class="section-title">DATOS</div>
@@ -129,7 +129,7 @@ canvas{
       </div>
       <div style="height:8px"></div>
       <button class="btn dark" type="button" onclick="newReceipt()">✨ Nuevo recibo / siguiente número</button>
-      <div class="note">El cliente queda realmente vacío al crear un recibo nuevo. El consecutivo sí se conserva.</div>
+      
     </div>
   </aside>
 
@@ -337,7 +337,7 @@ function draw(){
 
   const client=$('cliente').value.trim();
   if(client){
-    const fs=fitSize(client,540,58,'"Brush Script MT","500");
+    const fs=fitSize(client,540,58,'"Brush Script MT", "Segoe Script", cursive','500');
     ctx.fillStyle='#1b1613';
     ctx.font='500 '+fs+'px "Brush Script MT","Segoe Script",cursive';
     ctx.fillText(client,78,497);
