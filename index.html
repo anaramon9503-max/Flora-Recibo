@@ -305,12 +305,23 @@ function draw(){
   ctx.beginPath();ctx.moveTo(90,102);ctx.lineTo(300,102);ctx.moveTo(W-300,102);ctx.lineTo(W-90,102);ctx.stroke();
   smallFlower(W/2,102);
 
-  // logo dorado transparente
+  // bloque negro para el logo
+  rr(82,122,430,170,22,'#17110d','#2c2018');
+  ctx.strokeStyle='#c99a52';ctx.lineWidth=1.4;
+  ctx.beginPath();
+  ctx.moveTo(110,152);ctx.lineTo(190,152);
+  ctx.moveTo(404,152);ctx.lineTo(484,152);
+  ctx.stroke();
+  smallFlower(297,152);
+
+  // logo dorado transparente centrado sobre el bloque negro
   if(logo.complete){
-    const maxW=390,maxH=230;
+    const maxW=320,maxH=122;
     const ratio=Math.min(maxW/logo.width,maxH/logo.height);
     const w=logo.width*ratio,h=logo.height*ratio;
-    ctx.drawImage(logo,88,118,w,h);
+    const lx=82+(430-w)/2;
+    const ly=122+(170-h)/2+8;
+    ctx.drawImage(logo,lx,ly,w,h);
   }
 
   // recibo derecha
@@ -398,8 +409,13 @@ function draw(){
     ctx.fillStyle='#554940';ctx.font='400 19px Georgia';
     wrap(it.desc||'Servicio de fotografía',474,y+36,350,25,2);
 
-    ctx.fillStyle='#281f1a';ctx.font='700 23px Arial';ctx.textAlign='right';
-    ctx.fillText(money(it.amount||0),1140,y+54);
+    const amountText=money(it.amount||0);
+    ctx.font='700 21px Arial';
+    const amountBoxW=Math.max(132, ctx.measureText(amountText).width + 34);
+    rr(1148-amountBoxW, y+22, amountBoxW, 48, 14, '#fbf3e7', '#e3d2bf');
+    ctx.fillStyle='#8c6441';
+    ctx.textAlign='center';
+    ctx.fillText(amountText, 1148-amountBoxW/2, y+53);
     ctx.textAlign='left';
     y+=rh;
   }
@@ -408,11 +424,15 @@ function draw(){
   ctx.fillStyle='#fffdf9';ctx.fillRect(tx,y,tw,78);
   ctx.strokeStyle='#eadfd7';ctx.strokeRect(tx,y,tw,78);
   ctx.fillStyle='#9c6c43';ctx.font='700 27px Georgia';
-  ctx.fillText('TOTAL',810,y+49);
-  rr(940,y+10,220,58,12,'#2b1c17',null);
+  ctx.fillText('TOTAL',790,y+49);
   const total=items.reduce((s,it)=>s+Number(it.amount||0),0);
-  ctx.fillStyle='#fff8ed';ctx.font='700 28px Arial';ctx.textAlign='right';
-  ctx.fillText(money(total),1138,y+49);
+  const totalText=money(total);
+  ctx.font='700 28px Arial';
+  const totalBoxW=Math.max(210, ctx.measureText(totalText).width + 42);
+  rr(1160-totalBoxW, y+10, totalBoxW, 58, 14, '#e6c58f', '#d2b07b');
+  ctx.fillStyle='#2b1c17';
+  ctx.textAlign='center';
+  ctx.fillText(totalText, 1160-totalBoxW/2, y+49);
   ctx.textAlign='left';
 
   // footer inmediatamente después de la tabla

@@ -1,9 +1,7 @@
 # Recibos Flora Rodulfo Photography
 
-Correcciones:
-- La vista previa vuelve a mostrarse.
-- Se eliminó el texto explicativo del encabezado.
-- Se eliminó la nota técnica inferior.
-- Mantiene el logo, colores y diseño de Flora.
-- Cliente se limpia al crear un nuevo recibo.
-- Numeración automática.
+Cambios:
+- La parte del logo ahora va sobre un bloque negro.
+- El importe de cada concepto se ve más amigable, en una cajita suave.
+- El total también quedó más bonito y claro.
+- Mantiene la vista previa funcionando.
